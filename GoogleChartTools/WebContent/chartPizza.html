@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Gráfico em Pizza</title>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	//carregando bibliotecas do google
+	google.load("visualization", "1", {
+		packages : [ "corechart" ]
+	});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var dados = new google.visualization.DataTable();
+		dados.addColumn('string', 'Tipo de gastos');
+		data.addColumn('number', 'Valor gasto');
+		data.addRows(4);
+		data.setValue(0, 0, 'Alimentação');
+		data.setValue(0, 1, 450);
+		data.setValue(1, 0, 'Combustível');
+		data.setValue(1, 1, 300);
+		data.setValue(2, 0, 'Família');
+		data.setValue(2, 1, 600);
+		data.setValue(3, 0, 'Saúde');
+		data.setValue(3, 1, 350);
+		var chart = new google.visualization.PieChart(document
+				.getElementById('chart_div'));
+		chart.draw(data, {
+			width : 650,
+			height : 300,
+			title : 'Tipos de gastos'
+		});
+		google.visualization.events.addListener(chart, 'select', avisaDoClique);
+	}
+	function avisaDoClique(event) {
+		document.getElementById('msg').innerHTML += "Clique efetuado! <br/>";
+	}
+</script>
+</head>
+<body>
+	<h1>Não está funcionando</h1>
+	<div id="chart_div"></div>
+	<div id="msg"></div>
+</body>
+</html>
